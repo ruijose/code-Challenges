@@ -1,7 +1,6 @@
 class Complement
 
 	STRAIN_HASH = {
-		
 		"G" => "C",
 	 	"C" => "G",
 	 	"T" => "A", 
