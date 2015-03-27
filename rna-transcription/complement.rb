@@ -1,7 +1,6 @@
 class Complement
 
 	STRAIN_HASH = {
-		
 		"G" => "C",
 	 	"C" => "G",
 	 	"T" => "A", 
@@ -19,8 +18,8 @@ class Complement
 	end
 
 	def self.of_rna(strain)
-		ob = new(strain, 'rna')
-		ob.check_hash
+		obs = new(strain, 'rna')
+		obs.check_hash
 	end
 
 	def check_hash
