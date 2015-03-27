@@ -4,15 +4,11 @@ class Squares
   end
 
   def sum_of_squares
-    sum = 0
-    (1..@number).to_a.each { |n| sum += (n*n) }
-    sum
+    (1..@number).reduce(0){ |sum, value| sum + (value*value) }
   end
 
   def square_of_sums
-    square = 0
-    (1..@number).to_a.each { |n| square+= n }
-    square**2
+    (1..@number).reduce(0){ |sum, value| sum + value }**2
   end
 
   def difference
