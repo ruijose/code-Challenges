@@ -7,8 +7,7 @@ class Raindrops
   }
 
   def self.convert(number)
-    result = []
-    divisors_of(number).each { |n| result << FACTORS.fetch(n) if FACTORS.has_key?(n) }
+    result = divisors_of(number).map { |n| FACTORS.fetch(n) if FACTORS.has_key?(n) }.compact
     result.empty?? number.to_s : result.join
   end
 
