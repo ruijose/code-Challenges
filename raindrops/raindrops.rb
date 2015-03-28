@@ -1,17 +1,15 @@
 class Raindrops
 
-  HASH = {
-    "3" => "Pling",
-    "5" => "Plang",
-    "7" => "Plong"
+  FACTORS = {
+    3 => "Pling",
+    5 => "Plang",
+    7 => "Plong"
   }
 
   def self.convert(number)
     result = []
-    divisors = divisors_of(number)
-    divisors.each { |n| result << HASH[n.to_s] if HASH.has_key?(n.to_s)}
-    return number.to_s if result.empty?
-    result.join
+    divisors_of(number).each { |n| result << FACTORS.fetch(n) if FACTORS.has_key?(n) }
+    result.empty?? number.to_s : result.join
   end
 
   def self.divisors_of(num)
