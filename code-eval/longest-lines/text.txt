@@ -1,4 +1,4 @@
-5
+2
 Hello World
 CodeEval
 Quick Fox

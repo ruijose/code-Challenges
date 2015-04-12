@@ -1,4 +1,11 @@
-def lines
+#solution 1
+def lines1
+  lines = File.open(ARGV.first, 'r').readlines
+  lines[1..-1].sort_by(&:length).reverse.first(lines[0].to_i)
+end
+
+#solution 2 playing with hashes
+def lines2
   lines = File.open(ARGV.first, 'r').readlines
   numberOutputs = lines[0]
   hash = lines_length(lines[1..-1])
@@ -19,6 +26,7 @@ def ordered_lines(values,numberOfOutputs,hash)
   end
 end
 
-puts lines
+puts lines1
+puts lines2
 
 
