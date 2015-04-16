@@ -3,7 +3,7 @@ def ones(file=File.open(ARGV.first,"r"))
 end
 
 def count(binary)
-  puts binary.chars.map(&:to_i).reduce(0) { |result,n| result += 1 if n==1; result}
+  puts binary.chars.map(&:to_i).reduce(0) { |result,n| result += 1 if n==1; result }
 end
 
 ones
