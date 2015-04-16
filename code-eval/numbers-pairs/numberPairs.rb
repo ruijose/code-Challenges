@@ -21,7 +21,6 @@ def cycles(numbers,xNumber)
   result
 end
 
-pairs
 
 
 
