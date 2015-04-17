@@ -7,11 +7,16 @@ end
 
 def divisors_of(x,y,n)
   (1..n).each_with_object([]) do |number,result|
-    result << "F" if number % x == 0
-    result << "B" if number % y == 0
-    result << "FB" if number % y == 0 && number % x == 0
-    if not (number % x == 0 || number % y == 0 || (number % y == 0 && number % x == 0))
+    if (number % x == 0 && number % y == 0)
+      result << "FB"
+    elsif (number % x == 0)
+      result << "F"
+    elsif (number % y == 0)
+      result << "B"
+    else
       result << number
     end
   end
 end
+
+fizzbuzz_of
