@@ -4,9 +4,7 @@ def primes_of(file = File.open(ARGV.first, "r"))
   file.readlines.each do |line|
     sum = 0
     min_number, max_number = line.split(",")
-    (min_number.to_i..max_number.to_i).each do |n|
-      sum += 1 if is_prime?(n)
-    end
+    (min_number.to_i..max_number.to_i).each { |n| sum += 1 if is_prime?(n) }
     puts sum
   end
 end
