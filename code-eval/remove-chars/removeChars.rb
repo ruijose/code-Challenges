@@ -1,9 +1,7 @@
 #solution 1
 def remove_chars_of(file = File.open(ARGV.first, "r"))
   file.readlines.each do |line|
-    split = line.split(",")
-    stringToRemove = split[1].strip
-    originalString = split[0].strip
+    originalString, stringToRemove = line.split(",").map(&:strip)
     stringToRemove.chars.each do |char|
       originalString = originalString.delete(char)
     end
