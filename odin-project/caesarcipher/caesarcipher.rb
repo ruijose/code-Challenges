@@ -1,15 +1,9 @@
 ALPHABET1 = ("a".."z").to_a
 ALPHABET2 = ("A".."Z").to_a
 def caesar_cipher_of(word,shift)
-  result = ""
-  word.each_char do |c|
-    if /[a-zA-Z]/.match(c)
-      result << rotate(c,shift)
-    else
-      result << c
-    end
+  word.each_char.each_with_object("") do |c,result|
+    /[a-zA-Z]/.match(c) ? result << rotate(c,shift) : result << c
   end
-  result
 end
 
 def rotate(c,rot)
