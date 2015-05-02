@@ -14,10 +14,10 @@ describe 'gronsfeld_cipher' do
 	end
 	
 	it 'test string length method' do
-		expect(check_size_of("2121","olaruiolarui")).to eql("212121212121")
+		expect(check_size("2121","olaruiolarui")).to eql("212121212121")
 	end
 	
 	it 'test string length method' do
-		expect(check_size_of("2121","olarui")).to eql("212121")
+		expect(check_size("2121","olarui")).to eql("212121")
 	end
 end
