@@ -1,20 +1,20 @@
 def gronsfeld_cipher_of(key,message)
   new_key = check_size(key.to_s, message)
   message.chars.zip(new_key.to_s.chars).each_with_object("") do |(letter,number),result_string|
-	  result_string << decoding_alphabet.rotate(-number.to_i)[decoding_alphabet.index(letter)]
+    result_string << decoding_alphabet.rotate(-number.to_i)[decoding_alphabet.index(letter)]
   end
 end
 
 def check_size(key, message)
-	while true 
-		key.chars do |char|
-			return key if key.length == message.length
-			key = key << char
-		end
-	end
+  while true 
+    key.chars do |char|
+      return key if key.length == message.length
+      key = key << char
+    end
+  end
 end
 
 def decoding_alphabet
-	" !'#$%&'()*+,-./0123456789:<=>?@".chars + ("A".."Z").to_a + ("a".."z").to_a
+  " !'#$%&'()*+,-./0123456789:<=>?@".chars + ("A".."Z").to_a + ("a".."z").to_a
 end
 
