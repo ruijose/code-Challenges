@@ -1,4 +1,5 @@
-<h1>User name is: <%= @user.name %> </h1>
+<h1><center><%= @user.name %> </center></h1>
+<h1><center><%= @user.email %> </center></h1>
 
 <% if @user.events.any? %>
     <% @user.events.each do |event| %>
@@ -7,5 +8,5 @@
       </ul>
     <% end %>   
 <% else %>
-  <h1> You haven't created any events yet </h1>
+  <h1><center><%= link_to "create new event", new_event_path %></center></h1>
 <% end %>

@@ -9,8 +9,10 @@
 <body>
   <header>
     <% if logged_in? %>
-      <p> Welcome Back! <%= current_user.name %> </p>
-      <p> <%= link_to "logout", logout_path %> </p>
+      <ul>
+        <li><%= link_to "Home", root_url %></li>
+        <li><%= link_to current_user.name << "(logout)", logout_path %></li>
+      </ul>
     <% else %>
       <p> Not logged in. Please <%= link_to "login", login_path %> or <%= link_to "register", new_user_path %> </p>
     <% end %>

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name].downcase)
     if user 
       login user
-      redirect_to root_url
+      redirect_to user
     else
       render 'new'
     end
