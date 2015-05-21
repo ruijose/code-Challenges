@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PrivateEvents</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <% if logged_in? %>
+      <p> Welcome Back! <%= current_user.name %> </p>
+      <p> <%= link_to "logout", logout_path %> </p>
+    <% else %>
+      <p> Not logged in. Please <%= link_to "login", login_path %> or <%= link_to "register", new_user_path %> </p>
+    <% end %>
+  </header>
+
+  <%= yield %>
+
+</body>
+</html>

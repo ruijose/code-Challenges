@@ -1,0 +1,11 @@
+<h1>User name is: <%= @user.name %> </h1>
+
+<% if @user.events.any? %>
+    <% @user.events.each do |event| %>
+      <ul>
+        <li><%= link_to event.name, event_path(event) %></li>
+      </ul>
+    <% end %>   
+<% else %>
+  <h1> You haven't created any events yet </h1>
+<% end %>
