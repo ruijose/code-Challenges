@@ -5,24 +5,26 @@
 <h2>My Events</h2>
 
 <% if @user.events.any? %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>Date</td>
-        <td>Title</td>
-        <td>Location</td>
-        <td>Host</td>
-      </tr>
-    </thead>
-    <% @user.events.each do |event| %>
-      <tr>
-        <td><%= event.date %></td>
-        <td><%= link_to event.name, event_path(event)  %></td>
-        <td><%= event.location %></td>
-        <td><%= User.find(event.user_id).name %></td>
-      </tr>
-    <% end %>   
-  </table>
+  <div id="events-table">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Title</td>
+          <td>Location</td>
+          <td>Host</td>
+        </tr>
+      </thead>
+      <% @user.events.each do |event| %>
+        <tr>
+          <td><%= event.date %></td>
+          <td><%= link_to event.name, event_path(event)  %></td>
+          <td><%= event.location %></td>
+          <td><%= User.find(event.user_id).name %></td>
+        </tr>
+      <% end %>   
+    </table>
+  </div>
 <% else %>
   <h5>You haven't created any event yet</h5>
 <% end %>
