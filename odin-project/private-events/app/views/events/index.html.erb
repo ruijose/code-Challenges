@@ -1,1 +1,23 @@
-<h1>All Events</h1>
+<h1>Private Events</h1>
+
+<h4><%= link_to "Create new envent", new_event_path %></h4>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>Date</td>
+      <td>Title</td>
+      <td>Location</td>
+      <td>Host</td>
+    </tr>
+  </thead>
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.date %></td>
+      <td><%= link_to event.name, event_path(event)  %></td>
+      <td><%= event.location %></td>
+      <td><%= User.find(event.user_id).name %></td>
+    </tr>
+  <% end %>   
+</table>
+

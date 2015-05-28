@@ -1,12 +1,28 @@
-<h1><center><%= @user.name %> </center></h1>
-<h1><center><%= @user.email %> </center></h1>
+<div class="wrap">
+  <h5>Name: <%= @user.name %> Email: <%= @user.email %></h5>
+</div>
+
+<h2>My Events</h2>
 
 <% if @user.events.any? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Date</td>
+        <td>Title</td>
+        <td>Location</td>
+        <td>Host</td>
+      </tr>
+    </thead>
     <% @user.events.each do |event| %>
-      <ul>
-        <li><%= link_to event.name, event_path(event) %></li>
-      </ul>
+      <tr>
+        <td><%= event.date %></td>
+        <td><%= link_to event.name, event_path(event)  %></td>
+        <td><%= event.location %></td>
+        <td><%= User.find(event.user_id).name %></td>
+      </tr>
     <% end %>   
+  </table>
 <% else %>
-  <h1><center><%= link_to "create new event", new_event_path %></center></h1>
+  <h5>You haven't created any event yet</h5>
 <% end %>
