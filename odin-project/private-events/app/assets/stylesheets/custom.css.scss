@@ -21,11 +21,26 @@ header {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    text-align: center
+  text-align: center
 }
 
 #events-table {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#event-details {
+  width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+footer {
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  border-top: 3px solid #d3d3d3;
+  padding-top: 10px;
 }
