@@ -20,7 +20,7 @@
         <td><%= event.date %></td>
         <td><%= link_to event.name, event_path(event)  %></td>
         <td><%= event.location  %></td>
-        <td><%= User.find(event.user_id).name %></td>
+        <td><%= event.creator.name %></td>
       </tr>
     <% end %>   
   </table>
