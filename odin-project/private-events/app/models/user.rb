@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :invites,        :foreign_key => "attendee_id"
   has_many :attended_events, through: :invites
 
+  validates :name,  presence: true
+  validates :email, presence: true
+
   def attend(event)
     self.invites.create(:attended_event_id => event.id) if !event.attendees.include?(self)
   end
