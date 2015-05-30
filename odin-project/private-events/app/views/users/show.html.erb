@@ -2,24 +2,7 @@
 
 <% if @user.created_events.any? %>
   <div id="events-table">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>Date</td>
-          <td>Title</td>
-          <td>Location</td>
-          <td>Host</td>
-        </tr>
-      </thead>
-      <% @user.created_events.each do |event| %>
-        <tr>
-          <td><%= event.date %></td>
-          <td><%= link_to event.name, event_path(event)  %></td>
-          <td><%= event.location  %></td>
-          <td><%= event.creator.name %></td>
-        </tr>
-      <% end %>   
-    </table>
+    <%= render 'shared/table', object: @user.created_events %>
   </div>
 <% else %>
   <h5>You haven't created any event yet</h5>
@@ -29,24 +12,7 @@
 
 <% if @user.attended_events.any? %>
   <div id="events-table">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>Date</td>
-          <td>Title</td>
-          <td>Location</td>
-          <td>Host</td>
-        </tr>
-      </thead>
-      <% @user.attended_events.each do |event| %>
-        <tr>
-          <td><%= event.date %></td>
-          <td><%= link_to event.name, event_path(event)  %></td>
-          <td><%= event.location  %></td>
-          <td><%= event.creator.name %></td>
-        </tr>
-      <% end %>   
-    </table>
+    <%= render 'shared/table', object: @user.attended_events %>
   </div>
 <% else %>
   <h5>You haven't scheduled any events yet.</h5>
