@@ -1,5 +1,17 @@
 <h3><%= @event.name %></h3>
+
 <p><b>Location: </b><%= @event.location %></p>
-<p><b>Host: </b><%= User.find(@event.user_id).name %></p>
+<p><b>Host: </b><%= @event.creator.name %></p>
 <p><b>Date: </b><%= @event.date %></p>
 <p><b>Description: </b><%= @event.description %></p>
+<p><b>List of attendees:</b></p>
+
+<% if @event.attendees.any? %>
+  <% @event.attendees.each do |attendee| %>
+    <ul>
+      <li> <%= attendee.name %> </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>There is no one attending this event.</p>
+<% end %>
