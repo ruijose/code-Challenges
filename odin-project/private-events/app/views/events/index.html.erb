@@ -12,6 +12,7 @@
         <td>Title</td>
         <td>Location</td>
         <td>Host</td>
+        <td>Attendees</td>
       </tr>
     </thead>
 
@@ -21,6 +22,7 @@
         <td><%= link_to event.name, event_path(event)  %></td>
         <td><%= event.location  %></td>
         <td><%= event.creator.name %></td>
+        <td><%= event.invites.count %></td>
       </tr>
     <% end %>   
   </table>

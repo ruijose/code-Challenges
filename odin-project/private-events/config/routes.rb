@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   resources :sessions, only: [:new, :create, :destroy]
+  resources :invites, only: [:create]
 end

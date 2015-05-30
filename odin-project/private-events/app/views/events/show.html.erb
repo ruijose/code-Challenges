@@ -1,17 +1,24 @@
 <h3><%= @event.name %></h3>
 
-<p><b>Location: </b><%= @event.location %></p>
-<p><b>Host: </b><%= @event.creator.name %></p>
-<p><b>Date: </b><%= @event.date %></p>
-<p><b>Description: </b><%= @event.description %></p>
-<p><b>List of attendees:</b></p>
+<div id="events-details">
+  <p><b>Location: </b><%= @event.location %></p>
+  <p><b>Host: </b><%= @event.creator.name %></p>
+  <p><b>Date: </b><%= @event.date %></p>
+  <p><b>Description: </b><%= @event.description %></p>
+  <p><b>List of attendees:</b></p>
 
-<% if @event.attendees.any? %>
-  <% @event.attendees.each do |attendee| %>
-    <ul>
-      <li> <%= attendee.name %> </li>
-    </ul>
+  <% if @event.attendees.any? %>
+    <% @event.attendees.each do |attendee| %>
+      <ul>
+        <li> <%= attendee.name %> </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <p>There is no one attending this event.</p>
   <% end %>
-<% else %>
-  <p>There is no one attending this event.</p>
-<% end %>
+
+  <%= form_for(current_user.invites.build(attended_event_id: @event.id)) do |f| %>
+    <div><%= f.hidden_field :attended_event_id %></div>
+    <%= f.submit "Attend", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
