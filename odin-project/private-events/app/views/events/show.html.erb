@@ -1,4 +1,5 @@
 <h3><%= @event.name %></h3>
+<p><b>Location: </b><%= @event.location %></p>
 <p><b>Host: </b><%= User.find(@event.user_id).name %></p>
 <p><b>Date: </b><%= @event.date %></p>
 <p><b>Description: </b><%= @event.description %></p>

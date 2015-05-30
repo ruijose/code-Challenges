@@ -7,6 +7,7 @@
         <tr>
           <td>Date</td>
           <td>Title</td>
+          <td>Location</td>
           <td>Host</td>
         </tr>
       </thead>
@@ -14,6 +15,7 @@
         <tr>
           <td><%= event.date %></td>
           <td><%= link_to event.name, event_path(event)  %></td>
+          <td><%= event.location  %></td>
           <td><%= User.find(event.user_id).name %></td>
         </tr>
       <% end %>   
