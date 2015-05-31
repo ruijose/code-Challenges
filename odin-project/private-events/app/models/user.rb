@@ -9,4 +9,20 @@ class User < ActiveRecord::Base
   def attend(event)
     self.invites.create(:attended_event_id => event.id) if !event.attendees.include?(self)
   end
+
+  def upcoming_events
+    self.created_events.each_with_object([]) do |e, events|
+      events << e if check_date(e.date.to_date)
+    end
+  end
+
+  def previous_events
+    self.created_events.each_with_object([]) do |e, events|
+      events << e if !check_date(e.date.to_date)
+    end
+  end
+
+  def check_date(event_date)
+    event_date > Date.today
+  end
 end
