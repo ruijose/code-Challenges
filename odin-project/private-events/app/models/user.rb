@@ -11,15 +11,11 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_events
-    self.created_events.each_with_object([]) do |e, events|
-      events << e if check_date(e.date.to_date)
-    end
+    self.created_events.select { |event| check_date(event.date.to_date) }
   end
 
   def previous_events
-    self.created_events.each_with_object([]) do |e, events|
-      events << e if !check_date(e.date.to_date)
-    end
+    self.created_events.select { |event| !check_date(event.date.to_date)  }
   end
 
   def check_date(event_date)
