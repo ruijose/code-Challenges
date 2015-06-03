@@ -1,0 +1,25 @@
+<h1><center>Submit a new moview to be reviewed</center></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@movie) do |f| %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+      
+      <%= f.label :length %>
+      <%= f.text_field :length, class: 'form-control' %>
+
+      <%= f.label :director %>
+      <%= f.text_field :director, class: 'form-control' %>
+
+      <%= f.label :rating %>
+      <%= f.text_field :rating, class: 'form-control' %>
+      
+      <p><%= f.submit "Submit movie", class: "btn btn-primary center-block"  %></p>
+    <% end %>
+  </div>
+</div>
