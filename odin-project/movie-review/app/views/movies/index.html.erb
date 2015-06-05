@@ -1,19 +1,13 @@
 <h1>Movies#index</h1>
 
-<table>
-  <thead>
-    <th>Title</th>
-    <th>Image</th>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= image_tag movie.image.url(:medium) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @movies.each do |movie| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to "Create movie", new_movie_path %>
-
