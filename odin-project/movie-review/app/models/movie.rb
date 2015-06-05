@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  searchkick
   validates :title,       presence: true
   validates :description, presence: true
   validates :length,      presence: true, numericality: true
