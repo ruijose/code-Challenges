@@ -10,4 +10,3 @@ def rotate(c,rot)
   ALPHABET1.include?(c) ? ALPHABET1.rotate(rot)[ALPHABET1.index(c)] : ALPHABET2.rotate(rot)[ALPHABET2.index(c)]
 end
 
-puts caesar_cipher_of("ola dias!",5)
