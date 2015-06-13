@@ -1,6 +1,11 @@
-<%= image_tag @movie.image.url(:medium) %>
-<h3><%= @movie.title %></h3>
-<p><b>Description: </b><%= @movie.description %></p>
-<p><b>Length: </b><%= @movie.length %> minutes</p>
-<p><b>Director: </b><%= @movie.director %></p>
-<p><b>Rating: </b><%= @movie.rating %></p>
+<div class="col-md-4">
+  <%= image_tag @movie.image.url(:medium) %>
+  <p><b>Length: </b><%= @movie.length %> minutes</p>
+  <p><b>Director: </b><%= @movie.director %></p>
+</div>
+<div class="col-md-6 col-md-offset-1">
+  <h1 class="review_title"><%= @movie.title %></h1>
+  <p><%= @movie.description %></p>
+  <h3>No reviews just yet, would you like to add the first?</h3>
+  <%= link_to "Write Review", root_path, class: "btn btn-primary" %>
+</div>
