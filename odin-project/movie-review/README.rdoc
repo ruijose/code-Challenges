@@ -1,1 +1,7 @@
-A movie review app with rails 4
+Movie review app with rails 4
+==============
+
+Gems used:
+-paperclip
+-devise
+-searchkick
