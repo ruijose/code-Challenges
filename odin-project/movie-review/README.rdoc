@@ -2,6 +2,6 @@ Movie review app with rails 4
 ==============
 
 Gems used:
-*paperclip
-*devise
-*searchkick
+* paperclip
+* devise
+* searchkick
