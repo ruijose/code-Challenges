@@ -1,19 +1,32 @@
-<div class="col-md-4">
-  <%= image_tag @movie.image.url(:medium) %>
-  <p><b>Length: </b><%= @movie.length %> minutes</p>
-  <p><b>Director: </b><%= @movie.director %></p>
-</div>
-<div class="col-md-6 col-md-offset-1">
-  <h1 class="review_title"><%= @movie.title %></h1>
-  <p><%= @movie.description %></p>
-  <% if @movie.reviews.nil? %>
-    <h3>No reviews just yet, would you like to add the first?</h3>
-  <% else %>
-    <% @movie.reviews.each do |review| %>
-      <p><%= review.rating %></p>
-      <p><%= review.comment %></p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="thumbnail">
+      <%= image_tag @movie.image.url(:medium) %>
+    </div>
+  </div>
+  <div class="col-md-6 col-md-offset-1">
+    <h1 class="review_title"><%= @movie.title %></h1>
+    <% if !@movie.reviews.any? %>
+      <h3>No reviews just yet, would you like to add the first?</h3>
+    <% else %>
+      <% @movie.reviews.each do |review| %>
+        <div class="reviews">
+          <div class="user_star" data-score= <%= review.rating %> ></div>
+          <p><%= review.comment %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-primary" %>
+    <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-primary" %>
+  </div>
 </div>
+
+<script>
+  $('.user_star').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
