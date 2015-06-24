@@ -5,21 +5,31 @@
   <p><b>Host: </b><%= @event.creator.name %></p>
   <p><b>Date: </b><%= @event.date %></p>
   <p><b>Description: </b><%= @event.description %></p>
-  <p><b>List of attendees:</b></p>
 
-  <% if @event.attendees.any? %>
-    <% @event.attendees.each do |attendee| %>
-      <ul>
-        <li> <%= attendee.name %> </li>
-      </ul>
-      <%= render 'shared/attend' %>
-    <% end %>
-  <% else %>
-    <% if @event.date.to_date < Date.today %>
-      <p>No one attended this event.</p>
+  <% if @event.future_event? %>
+    <p><b>List of attendees:</b><p>
+    <% if @event.has_attendees? %>
+      <% @event.attendees.each do |attendee| %>
+        <ul>
+          <li> <%= attendee.name %> </li>
+        </ul>
+      <% end %>
     <% else %>
-      <p>There is no one attending this event.</p>
-      <%= render 'shared/attend' %>
+      <p>No one is attending this event.</p>
+    <% end %>
+    <%= render 'shared/attend' %>
+  <% end %>
+
+  <% if !@event.future_event? %>
+    <p><b>Attended people:</b></p>
+    <% if @event.has_attendees? %>
+      <% @event.attendees.each do |attendee| %>
+        <ul>
+          <li> <%= attendee.name %> </li>
+        </ul>
+      <% end %>
+    <% else %>
+      <p>No one attended this event</p>
     <% end %>
   <% end %>
 </div>
