@@ -13,19 +13,20 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <% if user_signed_in? %>
-        <li><a <%= link_to "Welcome back " << current_user.email << " (logout)", destroy_user_session_path, :method => :delete %></a></li>
+        <li><a <%= link_to "Personal page", user_path(:id => current_user.id) %></a></li>
+        <li><a <%= link_to "Logout", destroy_user_session_path, :method => :delete %></a></li>
       <% else %>
         <li><a <%= link_to "Sign up", new_user_registration_path %></a></li>
         <li><a <%= link_to "Login", new_user_session_path  %></a></li>
       <% end %>
       <li><a <%= link_to "Submit movie", new_movie_path %></li>
-      </ul>
-      <%= form_tag search_movies_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
-        <p>
-        <%= text_field_tag :search, params[:search], class: "form-control" %>
-        <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-        </p>
-      <% end %>
+    </ul>
+    <%= form_tag search_movies_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+      <p>
+      <%= text_field_tag :search, params[:search], class: "form-control" %>
+      <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+      </p>
+    <% end %>
     </div>
   </div>
 </nav>

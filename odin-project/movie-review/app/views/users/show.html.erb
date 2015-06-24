@@ -1,0 +1,30 @@
+<h3><center>Inserted movies to be reviewed</center></h3>
+
+<% if current_user.movies.any? %>
+  <div id="events-table">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Length</td>
+          <td>Director</td>
+          <td>Rating</td>
+          <td></td>
+        </tr>
+      </thead>
+
+      <% current_user.movies.each do |movie| %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.length %></td>
+          <td><%= movie.director %></td>
+          <td><%= movie.rating %></td>
+          <td><%= link_to "Destroy", movie, method: :delete %></td>
+        </tr>
+      <% end %>   
+    </table>
+  </div>
+<% else %>
+  <h4><center>You haven't created any movies.</center></h4>  
+<% end %>
+
