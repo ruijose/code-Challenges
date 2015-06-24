@@ -12,13 +12,14 @@
       <ul>
         <li> <%= attendee.name %> </li>
       </ul>
+      <%= render 'shared/attend' %>
     <% end %>
   <% else %>
-    <p>There is no one attending this event.</p>
-  <% end %>
-
-  <%= form_for(current_user.invites.build(attended_event_id: @event.id)) do |f| %>
-    <div><%= f.hidden_field :attended_event_id %></div>
-    <%= f.submit "Attend", class: "btn btn-large btn-primary" %>
+    <% if @event.date.to_date < Date.today %>
+      <p>No one attended this event.</p>
+    <% else %>
+      <p>There is no one attending this event.</p>
+      <%= render 'shared/attend' %>
+    <% end %>
   <% end %>
 </div>

@@ -26,12 +26,3 @@
   <h5>You haven't created any events yet.</h5>
 <% end %>
 
-<h3>Attending Events</h3>
-
-<% if @user.attended_events.any? %>
-  <div id="events-table">
-    <%= render 'shared/table', object: @user.attended_events %>
-  </div>
-<% else %>
-  <h5>You haven't scheduled any events yet.</h5>
-<% end %>

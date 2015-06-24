@@ -7,18 +7,22 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
   def attend(event)
-    self.invites.create(:attended_event_id => event.id) if !event.attendees.include?(self)
+    if !event.attendees.include?(self) && check_date(event.date)
+      self.invites.create(:attended_event_id => event.id) 
+    else
+      errors.add(:bad_date, "you cant attend a past event")
+    end
   end
 
   def upcoming_events
-    self.created_events.select { |event| check_date(event.date.to_date) }
+    self.created_events.select { |event| check_date(event.date) }
   end
 
   def previous_events
-    self.created_events.select { |event| !check_date(event.date.to_date)  }
+    self.created_events.select { |event| !check_date(event.date) }
   end
 
   def check_date(event_date)
-    event_date > Date.today
+    event_date.to_date >= Date.today
   end
 end

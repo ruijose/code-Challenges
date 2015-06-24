@@ -3,6 +3,7 @@
     <div class="thumbnail">
       <%= image_tag @movie.image.url(:medium) %>
     </div>
+    <p align="justify"><%= @movie.description %></p>
   </div>
   <div class="col-md-6 col-md-offset-1">
     <h1 class="review_title"><%= @movie.title %></h1>
